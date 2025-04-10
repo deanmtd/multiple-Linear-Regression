@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Linear Regression Tutorial - Machine Learning</title>
+    <style>
+        :root {
+            --python-blue: #306998;
+            --python-yellow: #FFD43B;
+            --python-dark-blue: #1c4163;
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --card-bg: white;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--python-blue);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--python-yellow);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        h2 {
+            color: var(--python-dark-blue);
+            border-bottom: 2px solid var(--python-yellow);
+            padding-bottom: 0.5rem;
+        }
+        
+        article {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--python-blue);
+        }
+        
+        h3 {
+            color: var(--python-dark-blue);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        
+        a {
+            display: inline-block;
+            background-color: var(--python-yellow);
+            color: var(--python-dark-blue);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 0.5rem 0 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            background-color: var(--python-dark-blue);
+            color: white;
+        }
+        
+        p {
+            margin: 1rem 0;
+        }
+        
+        footer {
+            background-color: var(--python-dark-blue);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        
+        /* Python code-like elements */
+        .code-comment {
+            color: var(--python-blue);
+            font-family: monospace;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        .import-section {
+            font-family: monospace;
+            margin-top: 1rem;
+            color: var(--python-dark-blue);
+        }
+
+        /* Code block styling */
+        pre {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        /* Image placeholder */
+        .img-placeholder {
+            background-color: #ddd;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .results-table th, .results-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .results-table th {
+            background-color: var(--python-blue);
+            color: white;
+        }
+
+        .results-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Multiple Linear Regression</h1>
+        <p class="import-section">import numpy as np, pandas as pd, matplotlib.pyplot as plt</p>
+    </header>
+    <section>
+        <h2>Multiple Linear Regression Introduction</h2>
+        <article>
+            <h3>Overview</h3>
+            <p>This data set tells us how much money was spent on R&D, Administration,
+            Marketing and profit margin. The rows represent 50 start-up companies.
+            The profit is the dependant variable (this determines which companies
+            will be picked as by venture capitalists. So we need to build a model
+            that will determine which company/ies to pick based on the independent
+            vars.</p>
+            <p>Our goal is to understand which factors (R&D vs marketing) yield better returns in terms of
+            profits, and how administrative spending and location affect outcomes. The model will assist
+            venture capitalists in making investment decisions.</p>
+        </article>
+
+        <h2>Multiple Linear Regression Intuition</h2>
+        <article>
+            <h3>Step 1</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: Multiple Linear Regression Step 1</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>Step 2</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: Multiple Linear Regression Step 2</p>
+            </div>
+            <div class="img-placeholder">
+                <p>Image placeholder: Additional visualization for Step 2</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>Step 3</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: Multiple Linear Regression Step 3</p>
+            </div>
+            <p>So what can we do in this regard?</p>
+            <div class="img-placeholder">
+                <p>Image placeholder: Options for Step 3</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>Step 4</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: Multiple Linear Regression Step 4</p>
+            </div>
+            <div class="img-placeholder">
+                <p>Image placeholder: Additional visualization for Step 4</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>Step 5: Building a model Step by Step</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: Building a model Step 1</p>
+            </div>
+            <div class="img-placeholder">
+                <p>Image placeholder: Building a model Step 2</p>
+            </div>
+            <div class="img-placeholder">
+                <p>Image placeholder: Building a model Step 3</p>
+            </div>
+            <p>In the above, Y is the dependant var and the X's are the independent
+            vars; so you will need to decide which ones you wanna keep and which
+            ones to throw out:</p>
+            <div class="img-placeholder">
+                <p>Image placeholder: Variable selection guidance</p>
+            </div>
+            <div class="img-placeholder">
+                <p>Image placeholder: Additional guidance on variables</p>
+            </div>
+            <p>It is better to decide which ones will be used for predictions and only
+            work with those. Rather go with the following guidelines:</p>
+            <div class="img-placeholder">
+                <p>Image placeholder: Recommended guidelines</p>
+            </div>
+        </article>
+
+        <h2>Variable Selection Methods</h2>
+        <article>
+            <h3>All IN Method</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: All IN method</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>Backward Elimination</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: Backward Elimination method</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>Forward Selection</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: Forward Selection method</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>Bidirectional Elimination</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: Bidirectional Elimination method</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>All Possible models</h3>
+            <div class="img-placeholder">
+                <p>Image placeholder: All Possible models method</p>
+            </div>
+            <p>For this course we gonna go with the fastest and most common method:</p>
+            <div class="img-placeholder">
+                <p>Image placeholder: Selected method</p>
+            </div>
+        </article>
+
+        <h2>Python Implementation</h2>
+        <article>
+            <h3>Initial Setup</h3>
+            <pre>
+# Multiple Linear Regression
+
+# Importing the libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Importing the dataset
+dataset = pd.read_csv('50_Startups.csv')
+X = dataset.iloc[:, :-1].values
+y = dataset.iloc[:, 3].values
+
+# Splitting the dataset into the Training set and Test set
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+# Feature Scaling
+"""from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+sc_y = StandardScaler()
+y_train = sc_y.fit_transform(y_train)"""
+            </pre>
+            <div class="img-placeholder">
+                <p>Image placeholder: Dataset format</p>
+            </div>
+            <p class="code-comment"># Dependant variable vector = Profit, the matrix of dependant vars are the other columns</p>
+        </article>
+
+        <article>
+            <h3>Encoding Categorical Data</h3>
+            <pre>
+# Encoding categorical data
+# Encoding the Independent Variable
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder()
+X[:, 3] = labelencoder_X.fit_transform(X[:, 3]) #4th column
+onehotencoder = OneHotEncoder(categorical_features = [3]) ## converting into dummy vars
+X = onehotencoder.fit_transform(X).toarray()
+            </pre>
+            <div class="img-placeholder">
+                <p>Image placeholder: Encoded data visualization</p>
+            </div>
+            <div class="img-placeholder">
+                <p>Image placeholder: Additional encoding explanation</p>
+            </div>
+        </article>
+
+        <article>
+            <h3>Avoiding the Dummy Variable Trap</h3>
+            <pre>
+X = X[:,1:] # this removes the 1st column of X, taking all the lines of X from index 1 to : (ie: to the end)
+#This avoids the dummy var trap; the onehotencoder however does this on it's own, so this code is not necesarry.
+
+# Splitting the dataset into the Training set and Test set
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0) #The "0.2" = 20%
+#This split the data into 40 rows of data for the training set and 10 rows for the test set
+
+#Now to fit the data into the training set:
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression() #Regressor = the object and LinearRegression = Class, now we gonna use the fit method:
+regressor.fit(X_train,y_train)
+            </pre>
+        </article>
+
+        <article>
+            <h3>Testing the Predictions</h3>
+            <pre>
+#Predicting the test set results
+y_pred = regressor.predict(X_test)
+            </pre>
+            <div class="img-placeholder">
+                <p>Image placeholder: Prediction results comparison</p>
+            </div>
+            <p>So remember that y_test contains the real profits while y_pred contains
+            the predicted profits / y_pred is the vector of predictions. Most of the
+            predictions were good, we can see a strong linear relationship between
+            the two sets.</p>
+        </article>
+
+        <article>
+            <h3>Building the Optimal Model Using Backward Elimination</h3>
+            <pre>
+#Building the optimal model using backward elimination
+import statsmodels.formula.api as sm
+X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis = 1)
+            </pre>
+            <div class="img-placeholder">
+                <p>Image placeholder: Backward elimination visualization</p>
+            </div>
+            <p>We will be doing the following as depicted in this slide (page 31)</p>
+            <pre>
+#Building the optimal model using backward elimination
+import statsmodels.formula.api as sm
+X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis = 1)
+X_opt = X[:, [0, 1, 2, 3, 4, 5]] #this lists the entire matrix of features for the independent vars -- Step1 in the slide on p 31.
+#So X0 = the 1st index, X1&2 = dummy vars, X3= R&D Spend, X4 = Administration, X5 = Marketing Spend
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+            </pre>
+            <p>OLS Regression Results Summary:</p>
+            <table class="results-table">
+                <tr>
+                    <th>Dep. Variable</th>
+                    <td>y</td>
+                    <th>R-squared</th>
+                    <td>0.947</td>
+                </tr>
+                <tr>
+                    <th>Model</th>
+                    <td>OLS</td>
+                    <th>Adj. R-squared</th>
+                    <td>0.943</td>
+                </tr>
+                <tr>
+                    <th>Method</th>
+                    <td>Least Squares</td>
+                    <th>F-statistic</th>
+                    <td>272.4</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>Fri, 26 Jan 2018</td>
+                    <th>Prob (F-statistic)</th>
+                    <td>2.76e-29</td>
+                </tr>
+            </table>
+            <p>Coefficients and P-values:</p>
+            <table class="results-table">
+                <tr>
+                    <th>Variable</th>
+                    <th>coef</th>
+                    <th>std err</th>
+                    <th>t</th>
+                    <th>P>|t|</th>
+                </tr>
+                <tr>
+                    <td>const</td>
+                    <td>2.106e+04</td>
+                    <td>1119.878</td>
+                    <td>18.806</td>
+                    <td>0.000</td>
+                </tr>
+                <tr>
+                    <td>x1</td>
+                    <td>2.106e+04</td>
+                    <td>1119.878</td>
+                    <td>18.806</td>
+                    <td>0.000</td>
+                </tr>
+                <tr>
+                    <td>x2</td>
+                    <td>6629.0960</td>
+                    <td>1918.921</td>
+                    <td>3.455</td>
+                    <td>0.001</td>
+                </tr>
+                <tr>
+                    <td>x3</td>
+                    <td>7792.9623</td>
+                    <td>2025.567</td>
+                    <td>3.847</td>
+                    <td>0.000</td>
+                </tr>
+                <tr>
+                    <td>x4</td>
+                    <td>6638.6928</td>
+                    <td>1957.622</td>
+                    <td>3.391</td>
+                    <td>0.001</td>
+                </tr>
+                <tr>
+                    <td>x5</td>
+                    <td>0.8530</td>
+                    <td>0.030</td>
+                    <td>28.226</td>
+                    <td>0.000</td>
+                </tr>
+            </table>
+            <p>The lower the P value, the more significant your independent var will be with respect to your dependant var.</p>
+            <pre>
+X_opt = X[:, [0, 1, 3, 4, 5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:, [0, 3, 4, 5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:, [0, 3, 5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:, [0, 3]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+            </pre>
+            <p>The optimal team of independent vars that has the highest impact
+            statistically on our model is only one: X_opt = X[:, [0, 3]]</p>
+        </article>
+
+        <h2>Automatic Backward Elimination</h2>
+        <article>
+            <h3>Backward Elimination with p-values only</h3>
+            <pre>
+import statsmodels.formula.api as sm
+def backwardElimination(x, sl):
+    numVars = len(x[0])
+    for i in range(0, numVars):
+        regressor_OLS = sm.OLS(y, x).fit()
+        maxVar = max(regressor_OLS.pvalues).astype(float)
+        if maxVar > sl:
+            for j in range(0, numVars - i):
+                if (regressor_OLS.pvalues[j].astype(float) == maxVar):
+                    x = np.delete(x, j, 1)
+        regressor_OLS.summary()
+        return x
+    
+SL = 0.05
+X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+X_Modeled = backwardElimination(X_opt, SL)
+            </pre>
+        </article>
+
+        <article>
+            <h3>Backward Elimination with p-values and Adjusted R Squared</h3>
+            <pre>
+import statsmodels.formula.api as sm
+def backwardElimination(x, SL):
+    numVars = len(x[0])
+    temp = np.zeros((50,6)).astype(int)
+    for i in range(0, numVars):
+        regressor_OLS = sm.OLS(y, x).fit()
+        maxVar = max(regressor_OLS.pvalues).astype(float)
+        adjR_before = regressor_OLS.rsquared_adj.astype(float)
+        if maxVar > SL:
+            for j in range(0, numVars - i):
+                if (regressor_OLS.pvalues[j].astype(float) == maxVar):
+                    temp[:,j] = x[:, j]
+                    x = np.delete(x, j, 1)
+                    tmp_regressor = sm.OLS(y, x).fit()
+                    adjR_after = tmp_regressor.rsquared_adj.astype(float)
+                    if (adjR_before >= adjR_after):
+                        x_rollback = np.hstack((x, temp[:,[0,j]]))
+                        x_rollback = np.delete(x_rollback, j, 1)
+                        print(regressor_OLS.summary())
+                        return x_rollback
+                    else:
+                        continue
+        regressor_OLS.summary()
+        return x
+    
+SL = 0.05
+X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+X_Modeled = backwardElimination(X_opt, SL)
+            </pre>
+            <p class="code-comment"># Efficient implementation of backward elimination with R-squared optimization</p>
+        </article>
+    </section>
+    <footer>
+        <p>&copy; Machine Learning Tutorial 2025</p>
+    </footer>
+</body>
+</html>
