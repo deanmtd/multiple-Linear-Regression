@@ -309,8 +309,9 @@ X_test = sc_X.transform(X_test)
 sc_y = StandardScaler()
 y_train = sc_y.fit_transform(y_train)"""
             </pre>
-            <div class="img-placeholder">
-                <p>Image placeholder: Dataset format</p>
+            <div class="img-container">
+				<img src="Images/MLR-NumPy-Array.png" alt="SLR Diagram" width="800">
+				<p><em>Dataset format</em></p>
             </div>
             <p class="code-comment"># Dependant variable vector = Profit, the matrix of dependant vars are the other columns</p>
         </article>
@@ -326,12 +327,11 @@ X[:, 3] = labelencoder_X.fit_transform(X[:, 3]) #4th column
 onehotencoder = OneHotEncoder(categorical_features = [3]) ## converting into dummy vars
 X = onehotencoder.fit_transform(X).toarray()
             </pre>
-            <div class="img-placeholder">
-                <p>Image placeholder: Encoded data visualization</p>
+            <div class="img-container">
+				<img src="Images/MLR-NumPy-Array1.png" alt="SLR Diagram" width="800">
+				<p><em>Encoded data visualization</em></p>
             </div>
-            <div class="img-placeholder">
-                <p>Image placeholder: Additional encoding explanation</p>
-            </div>
+
         </article>
 
         <article>
