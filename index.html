@@ -358,8 +358,9 @@ regressor.fit(X_train,y_train)
 #Predicting the test set results
 y_pred = regressor.predict(X_test)
             </pre>
-            <div class="img-placeholder">
-                <p>Image placeholder: Prediction results comparison</p>
+            <div class="img-container">
+				<img src="Images/MLR-Predictions-Test.png" alt="SLR Diagram" width="800">
+				<p><em>Prediction results comparison</em></p>
             </div>
             <p>So remember that y_test contains the real profits while y_pred contains
             the predicted profits / y_pred is the vector of predictions. Most of the
@@ -374,8 +375,9 @@ y_pred = regressor.predict(X_test)
 import statsmodels.formula.api as sm
 X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis = 1)
             </pre>
-            <div class="img-placeholder">
-                <p>Image placeholder: Backward elimination visualization</p>
+            <div class="img-container">
+				<img src="Images/MLR-Backward-Elimination-Opt.png" alt="SLR Diagram" width="800">
+				<p><em>Backward elimination visualization</em></p>
             </div>
             <p>We will be doing the following as depicted in this slide (page 31)</p>
             <pre>
